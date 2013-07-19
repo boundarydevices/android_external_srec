@@ -180,7 +180,7 @@ class FactorWeightFstImpl
       if (s == kNoStateId)
         return kNoStateId;
       StateId start = FindState(Element(fst_->Start(), Weight::One()));
-      SetStart(start);
+      this->SetStart(start);
     }
     return CacheImpl<A>::Start();
   }
@@ -194,9 +194,9 @@ class FactorWeightFstImpl
                  : (Weight) Times(e.weight, fst_->Final(e.state));
       FactorIterator f(w);
       if (w != Weight::Zero() && f.Done())
-        SetFinal(s, w);
+        this->SetFinal(s, w);
       else
-        SetFinal(s, Weight::Zero());
+        this->SetFinal(s, Weight::Zero());
     }
     return CacheImpl<A>::Final(s);
   }
